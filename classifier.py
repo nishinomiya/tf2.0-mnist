@@ -20,6 +20,7 @@ class Trainer(object):
   def build_model(self, inputs, outputs) -> None:
     inputs_ = layers.Input((inputs,))
     x = layers.Dense(128, activation="relu")(inputs_)
+    x = layers.Dropout(0.1)(x)
     x = layers.Dense(64, activation="relu")(x)
     x = layers.Dense(outputs, activation="softmax")(x)
     self.model = tf.keras.models.Model(inputs_, x)
